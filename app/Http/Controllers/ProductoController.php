@@ -38,7 +38,8 @@ class ProductoController extends Controller
         
     }
 
-    public function edit (){
-        
+    public function edit ($Producto){
+        $datoProducto = Producto::findOrFail($Producto);
+        return view('producto.edit',['datoProducto'=>$datoProducto]);
     }
 }
