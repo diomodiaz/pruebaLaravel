@@ -26,16 +26,25 @@ class ProductoController extends Controller
         
     }
 
-    public function update (){
+    public function update ($Producto, Request $request){
         
+        $ObjProducto = Producto::findOrFail($Producto);
+        $ObjProducto->nombre=$request->Nombre;
+        $ObjProducto->valorUnitario=$request->ValorUnidad;
+        $ObjProducto->codigo=$request->Codigo;
+
+        $ObjProducto->save();
+        return redirect('productos');
     }
 
     public function show (){
         
     }
 
-    public function destroy (){
-        
+    public function destroy ($Producto){
+        $producto = Producto::find($Producto);
+        $producto->delete();
+        return redirect('productos');
     }
 
     public function edit ($Producto){
